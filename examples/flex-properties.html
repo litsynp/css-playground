@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h2>flex vs flexbox</h2>
+
+  <p>flex and flexbox are the same thing.</p>
+
+  <h2>display: flex</h2>
+
+  <p> When we set <code>display: flex</code> on the container, its child element has default flex properties of
+    <code>flex: 0 1 auto</code>. This means <code>flex-grow: 0</code>, <code>flex-shrink: 1</code>, and
+    <code>flex-basis: auto</code>.
+  </p>
+
+  <div class="container flex-container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+  </div>
+
+  <h2>flex: 1</h2>
+  <p>
+    <code>flex: 1</code> is shorthand for <code>flex: 1 1 0</code>, which means <code>flex-grow: 1</code>,
+    <code>flex-shrink: 1</code>, and <code>flex-basis: 0%</code>.
+  </p>
+
+  <ul>
+    <li>
+      <code>flex: 1 1 0</code> means the element can grow and shrink as much as it can, and it starts at a size of 0.
+    </li>
+
+    <li>
+      <code>flex 1 1 auto</code> means the element can grow and shrink as much as it can, and it starts at its default
+      size, which is determined by width attributes or parent > child size designation.
+    </li>
+
+    <li>
+      <code>flex-basis: 0</code> and <code>flex-basis: 0%</code> are different in that 0% is relative to the flex
+      container's inner main size. That means if the parent container doesn't have any explicit size(since you are using
+      min-height), we cannot resolve the percentage value and it will fail to auto. Setting 0 on the other hand means
+      setting the element size to 0.
+      (<a
+        href="https://stackoverflow.com/questions/63475073/css-flex-basis-0-has-different-behaviour-to-flex-basis-0px">source</a>)
+    </li>
+  </ul>
+  <div class="container flex-container">
+    <div class="item flex-1-item">1</div>
+    <div class="item flex-1-item">2</div>
+    <div class="item flex-1-item">3</div>
+    <div class="item flex-1-item">4</div>
+    <div class="item flex-1-item">5</div>
+  </div>
+
+
+  <h2>flex-basis</h2>
+
+  <p>
+    flex-basis sets the initital main size of the flex item. It sets the size of the content box unless otherwise set
+    with box-sizing.
+  </p>
+
+  <div class="container flex-container flex-basis-container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+
+  <h2>flex-grow</h2>
+
+  <p>flex-grow specifies how much the item will grow relative to the rest of the flexible items inside the same
+    container.</p>
+
+  <div class="container flex-container flex-grow-container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+
+  <h2>flex-shrink</h2>
+
+  <p>
+    flex-shrink specifies how much the item will shrink relative to the rest of the flexible items inside the same
+    container.
+  </p>
+
+  <ul>
+    <li>Default value of flex-shrink should be 1.</li>
+
+    <li>
+      The bigger the flex-shrink value, the more the item will shrink relative to the rest of the flexible items.
+    </li>
+
+    <li>flex-shrink often requires the parent container to be a single-line flex container by setting
+      <code>flex-wrap: nowrap</code>. Otherwise, the items will wrap to the next line instead of shrinking.
+      (<a href="https://stackoverflow.com/questions/39457010/why-do-flex-items-wrap-instead-of-shrink">source</a>)
+    </li>
+
+    <li>
+      flex-shrink is often used alongside flex-grow and flex-basis.
+    </li>
+  </ul>
+
+  <div class="container flex-container flex-shrink-container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+
+<style>
+  .container {
+    border: 1px solid black;
+  }
+
+  .item {
+    text-align: center;
+    border: 1px solid black;
+  }
+
+  .item:nth-of-type(odd) {
+    background-color: #897cff;
+  }
+
+  .item:nth-of-type(even) {
+    background-color: #ff7c7c;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flex-1-item {
+    flex: 1;
+  }
+
+  .flex-basis-container {
+    flex-wrap: nowrap;
+    width: 500px;
+  }
+
+  .flex-basis-container .item:nth-of-type(1) {
+    flex-basis: 300px;
+  }
+
+  .flex-basis-container .item:nth-of-type(2) {
+    flex-basis: 200px;
+  }
+
+  .flex-basis-container .item:nth-of-type(3) {
+    flex-basis: 100px;
+  }
+
+  .flex-grow-container .item:nth-of-type(1) {
+    flex-grow: 1;
+  }
+
+  .flex-grow-container .item:nth-of-type(2) {
+    flex-grow: 3;
+  }
+
+  .flex-grow-container .item:nth-of-type(3) {
+    flex-grow: 1;
+  }
+
+  .flex-shrink-container {
+    flex-wrap: nowrap;
+    width: 500px;
+  }
+
+  .flex-shrink-container .item {
+    flex-basis: 300px;
+  }
+
+  .flex-shrink-container .item:nth-of-type(2) {
+    flex-shrink: 3;
+  }
+</style>
+
+</html>
