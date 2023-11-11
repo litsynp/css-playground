@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <section class="item-container flex-container">
+    <div class="item flex-item">1</div>
+    <div class="item flex-item">2</div>
+    <div class="item flex-item">3</div>
+    <div class="item flex-item">4</div>
+    <div class="item flex-item">5</div>
+  </section>
+
+  <div class="div-space"></div>
+
+  <section class="item-container grid-container">
+    <div class="item grid-item">1</div>
+    <div class="item grid-item">2</div>
+    <div class="item grid-item">3</div>
+    <div class="item grid-item">4</div>
+    <div class="item grid-item">5</div>
+  </section>
+</body>
+
+<style>
+  body {
+    background-color: #FFF;
+  }
+
+  .div-space {
+    height: 50px;
+  }
+
+  .item-container {
+    width: 500px;
+    height: 100px;
+    border: 1px solid black;
+  }
+
+  .item {
+    border: 1px solid black;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item:nth-of-type(odd) {
+    background-color: #897cff;
+  }
+
+  .item:nth-of-type(even) {
+    background-color: #ff7c7c;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flex-item {
+    flex: 1 1 100px;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+    /* means repeat as many as you can, but at least 150px */
+  }
+</style>
+
+</html>
